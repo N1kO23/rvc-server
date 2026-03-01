@@ -1,0 +1,13 @@
+services:
+  rvc:
+    build: .
+    container_name: rvc-server
+    restart: unless-stopped
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - MODEL_NAME
+    volumes:
+      - ./models:/models
+    ports:
+      - "8000:8000"
